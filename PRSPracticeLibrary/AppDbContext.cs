@@ -51,7 +51,7 @@ namespace PRSPracticeLibrary {
 
             });
             model.Entity<Product>(e => {
-                e.ToTable("Products");
+                e.ToTable("Products"); 
                 e.HasKey(x => x.Id);
                 e.Property(x => x.PartNbr).HasMaxLength(30).IsRequired();
                 e.HasIndex(x => x.PartNbr).IsUnique();
