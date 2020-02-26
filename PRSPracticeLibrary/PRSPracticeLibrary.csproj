@@ -9,6 +9,10 @@
     <Compile Remove="Migrations\20200225212703_Added Products, Vendors, User Tables.Designer.cs" />
     <Compile Remove="Migrations\20200225213209_Added Products, Vendors, User Tables.cs" />
     <Compile Remove="Migrations\20200225213209_Added Products, Vendors, User Tables.Designer.cs" />
+    <Compile Remove="Migrations\20200226135857_added tables user,vendor, product.cs" />
+    <Compile Remove="Migrations\20200226135857_added tables user,vendor, product.Designer.cs" />
+    <Compile Remove="Migrations\20200226205646_added tables.cs" />
+    <Compile Remove="Migrations\20200226205646_added tables.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,10 +22,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

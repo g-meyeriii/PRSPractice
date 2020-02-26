@@ -14,6 +14,7 @@ namespace PRSPracticeLibrary.Models {
         public string PhotoPath { get; set; }
         public int VendorId { get; set; }
         public virtual Vendor Vendor { get; internal set; }
+        public virtual List<RequestLine> Requestlines { get; set; }
 
         public Product() { }
 
