@@ -4,40 +4,72 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.Data.SqlClient;
 using PRSPracticeLibrary.Models;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace PRSPracticeLibrary.Controllers {
 
-    class UserController {
+    public class UserController {
+
         private AppDbContext context = new AppDbContext();
-        private static User user;
 
-        //public static BcConnection bcConnection { get; set; }
+        public IEnumerable<User> GetAll() {
+            return context.Users.ToList();
+        }
+        public User GetByPk(int id) {
+            if (id < 1) throw new Exception("Id must be greater than zero");
+            return context.Users.Find(id);
+        }
+        public User Insert(User user) { //Have to make sure it is not null before we do anything
+            if (user == null) throw new Exception("User can't be null");
+            //edit checking here
+            context.Users.Add(user);
+            try {
+                context.SaveChanges();
+            } catch (DbUpdateException ex) {
+                throw new Exception("Username must be unique", ex);
+            } catch (Exception ex) {
+                throw;
+            }
+            return user; //Will now return the user id 
+        }
+        public bool Update(int id, User user) {
+            if (user == null) throw new Exception("User can't be null");
+            if (id != user.Id) throw new Exception("Id and User.Id must match");//These two minimum checks
+            //user.UpdatedTime(know)
+            context.Entry(user).State = EntityState.Modified;//Don't add this to the system as new, it will be updated
+                                                             //
+            
+            try {
+                context.SaveChanges();
+            } catch (DbUpdateException ex) {
+                throw new Exception("Username must be unique", ex);
+            } catch (Exception ex) {
+                throw;
+            }
+            return true;
+        }
+        public bool Delete(int id) {
+            if (id <= 0) throw new Exception("Id must be greater than zero");
+            var user = context.Users.Find(id);
+            // check the value and new exception
+           
+            return Delete(user);
+        }
 
-        //public static List<Users> GetAllUsers() {
-        //    var sql = "Select* From User";
-        //    var command = new SqlCommand(sql, bcConnection.Connection);
-        //    var reader = command.ExecuteReader();
-        //    if (!reader.HasRows) {
-        //        throw new Exception("No users found");
-        //        reader.Close();
-        //        return new List<Users>();
-        //    }
-        //}
+        public bool Delete(User user) { //two delete functions
+            //error check the value
+            context.Users.Remove(user);
+            context.SaveChanges();
+            return true;
+        }
 
-        //public static Models.User GetUserByPk(int id) {
-        //    var sql = $"Select* From User where Id ={id}";
-        //    var command = new SqlCommand(bcConnection.Connection);
-        //    var reader = command.ExecuteReader();
-        //    if (!reader.HasRows) {
-        //        throw new Exception("User Id not found");
-             }
-        }  
+        public UserController() { }
+
+    }
+}  
         
-        public static 
-
-
-
-
+        
         //public User(string Username, string Password) { 
         //    if(Username != Username && Password != Password ){
         //        return null;
@@ -48,12 +80,3 @@ namespace PRSPracticeLibrary.Controllers {
         //the instance if found; otherwise returns null.
 
 
-
-
-
-
-        public UserController() { }
-
-        
-    }
-}

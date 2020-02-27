@@ -18,7 +18,7 @@ namespace PRSPracticeLibrary.Models {
         public bool IsAdmin { get; set; }
         public virtual List<User> Users { get; set; }
         public virtual List<Request> Requests { get; set; }
-        public virtual UserController UserController { get; set; }
+        //public virtual UserController UserController { get; set; }
 
         
 
