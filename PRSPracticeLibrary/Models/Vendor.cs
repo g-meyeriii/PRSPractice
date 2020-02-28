@@ -17,7 +17,7 @@ namespace PRSPracticeLibrary.Models {
 
         public Vendor() {  }
 
-        public virtual List<Product> Products { get; set;  }
+        public virtual List<Product> Products { get; set; }
     }
 
 }

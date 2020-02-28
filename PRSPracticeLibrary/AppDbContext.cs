@@ -4,11 +4,14 @@ using System;
 
 namespace PRSPracticeLibrary {
     public class AppDbContext : DbContext {
+        internal readonly object vendors;
+
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Vendor> Vendors { get; set; }  
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Request> Requests { get; set;}
         public virtual DbSet<RequestLine> RequestLines { get; set; }
+        
 
         
 
@@ -87,7 +90,14 @@ namespace PRSPracticeLibrary {
                             .HasForeignKey(x => x.ProductId).OnDelete(DeleteBehavior.Restrict);
                 e.Property(x => x.Quantity).HasDefaultValue(1);
             });
-        }   
-        
+        }
+
+        internal object Find(int id) {
+            throw new NotImplementedException();
+        }
+
+        internal object Find(Vendor id) {
+            throw new NotImplementedException();
+        }
     }
 }
