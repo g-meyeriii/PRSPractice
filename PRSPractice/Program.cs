@@ -22,7 +22,7 @@ namespace PRSPractice {
             u.Username = "gmey";
 
             var u1 = new UserController();
-            //u1.Insert(u);
+            u1.Insert(u);
             //Now to update
             
             var founduser = u1.GetByPk(1);

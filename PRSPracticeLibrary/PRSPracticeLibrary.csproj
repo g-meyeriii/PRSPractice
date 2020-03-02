@@ -13,6 +13,12 @@
     <Compile Remove="Migrations\20200226135857_added tables user,vendor, product.Designer.cs" />
     <Compile Remove="Migrations\20200226205646_added tables.cs" />
     <Compile Remove="Migrations\20200226205646_added tables.Designer.cs" />
+    <Compile Remove="Migrations\20200302135335_removed and reloaded.cs" />
+    <Compile Remove="Migrations\20200302135335_removed and reloaded.Designer.cs" />
+    <Compile Remove="Migrations\20200302140023_remove and reloaded.cs" />
+    <Compile Remove="Migrations\20200302140023_remove and reloaded.Designer.cs" />
+    <Compile Remove="Migrations\20200302140640_init.cs" />
+    <Compile Remove="Migrations\20200302140640_init.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
