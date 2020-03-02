@@ -168,9 +168,7 @@ namespace PRSPracticeLibrary.Migrations
                         .HasColumnType("nvarchar(12)")
                         .HasMaxLength(12);
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
+                
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(30)")
@@ -178,8 +176,7 @@ namespace PRSPracticeLibrary.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
+                 
                     b.HasIndex("Username")
                         .IsUnique();
 

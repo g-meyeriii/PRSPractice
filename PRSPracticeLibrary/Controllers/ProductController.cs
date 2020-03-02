@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 
 namespace PRSPracticeLibrary.Controllers {
-    class ProductController {
+    public class ProductController {
         private AppDbContext context = new AppDbContext();
 
        public IEnumerable<Product> GetAll() {

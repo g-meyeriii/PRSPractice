@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PRSPracticeLibrary.Models {
     public class RequestLine {
-
+        
         public int Id { get; set; }
         public int RequestId { get; set; }
         public int ProductId { get; set; }

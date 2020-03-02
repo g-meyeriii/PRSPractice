@@ -13,11 +13,12 @@ namespace PRSPracticeLibrary.Controllers {
 
         private AppDbContext context = new AppDbContext();
 
+       
         public IEnumerable<User> GetAll() {
             return context.Users.ToList();
         }
         public User GetByPk(int id) {
-            if (id >= 1) throw new Exception("Id must be greater than zero");
+            if (id < 1) throw new Exception("Id must be greater than zero");
             return context.Users.Find(id);
         }
         public User Insert(User user) { //Have to make sure it is not null before we do anything
@@ -27,15 +28,15 @@ namespace PRSPracticeLibrary.Controllers {
             if (user.Password == null || user.Password.Length > 30) throw new Exception("Password is null or too long");
             if (user.Firstname == null || user.Firstname.Length > 30) throw new Exception("Firstname is null or too long");
             if (user.Lastname == null || user.Lastname.Length > 30) throw new Exception("Lastname null or too long");
-            if (user.Phone == null || user.Phone.Length > 12) throw new Exception("Phone is null or too long");
-            if (user.Email == null || user.Email.Length > 255) throw new Exception("Email is null or too long");
-            var userDb = context.Users.Find(user.Id);
+            if (user.Phone != null && user.Phone.Length > 12) throw new Exception("Phone is too long");
+            if (user.Email != null && user.Email.Length > 255) throw new Exception("Email is too long");
+            //var userDb = context.Users.Find(user);
             context.Users.Add(user);
             try {
                 context.SaveChanges();
             } catch (DbUpdateException ex) {
                 throw new Exception("Username must be unique", ex);
-            } catch (Exception ex) {
+            } catch (Exception) {
                 throw;
             }
             return user; //Will now return the user id 
@@ -47,15 +48,15 @@ namespace PRSPracticeLibrary.Controllers {
             if (user.Password == null || user.Password.Length > 30) throw new Exception("Password is null or too long");
             if (user.Firstname == null || user.Firstname.Length > 30) throw new Exception("Firstname is null or too long");
             if (user.Lastname == null || user.Lastname.Length > 30) throw new Exception("Lastname null or too long");
-            if (user.Phone == null || user.Phone.Length > 12) throw new Exception("Phone is null or too long");
-            if (user.Email == null || user.Email.Length > 255) throw new Exception("Email is null or too long");
+            if (user.Phone != null && user.Phone.Length > 12) throw new Exception("Phone is too long");
+            if (user.Email != null && user.Email.Length > 255) throw new Exception("Email is too long");
             var userDb = context.Users.Find(user.Id);
-            context.Users.Add(user);
+            context.Users.Update(user);
             try {
                 context.SaveChanges();
             } catch (DbUpdateException ex) {
                 throw new Exception("Username must be unique", ex);
-            } catch (Exception ex) {
+            } catch (Exception) {
                 throw;
             }
             return true;

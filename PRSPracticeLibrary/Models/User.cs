@@ -9,8 +9,7 @@ using System.Linq;
 namespace PRSPracticeLibrary.Models {
     public class User {
         
-
-        public int Id { get; set; }
+         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Firstname { get; set; }
@@ -21,7 +20,6 @@ namespace PRSPracticeLibrary.Models {
         public bool IsAdmin { get; set; }
         public virtual List<User> Users { get; set; }
         public virtual List<Request> Requests { get; set; }
-        public virtual List<UserController> UserController { get; set; }
 
         
 
@@ -33,4 +31,4 @@ namespace PRSPracticeLibrary.Models {
         }
     }
 
-}
+

@@ -19,15 +19,14 @@ namespace PRSPracticeLibrary.Migrations
                     Phone = table.Column<string>(maxLength: 12, nullable: true),
                     Email = table.Column<string>(maxLength: 255, nullable: true),
                     IsReviewer = table.Column<bool>(nullable: false),
-                    IsAdmin = table.Column<bool>(nullable: false),
-                    UserId = table.Column<int>(nullable: true)
+                    IsAdmin = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Users_Users_UserId",
-                        column: x => x.UserId,
+                        column: x => x.Id,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -153,11 +152,6 @@ namespace PRSPracticeLibrary.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Requests_UserId",
                 table: "Requests",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_UserId",
-                table: "Users",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(

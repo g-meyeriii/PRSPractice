@@ -26,12 +26,7 @@ namespace PRSPracticeLibrary.Controllers {
                 request.Status = StatusReview;
             }
             return Update(request.Id, request);
-
-
          }
-
-        
-
         public bool SetToApproved(Request request) {
             request.Status = StatusApproved;
             return Update(request.Id, request);
